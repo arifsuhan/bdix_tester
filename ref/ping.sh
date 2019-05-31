@@ -1,3 +1,31 @@
+
+# \xE2\x9B\x94 = ?
+
+# logo thin > deep  > deeper
+# \xE2\x9C\x93 \xE2\x9C\x94 \xE2\x9C\x85 = right
+# \xE2\x9C\x98 \xE2\x9C\x96 \xE2\x9D\x8C = failed
+y= tput cols
+x= tput lines
+
+
+function logo()
+{	
+	for i in `seq 80 100`
+	do 
+		printf '\xE2\x9C\x'$i' '
+	done
+
+	printf '\n'
+
+	for i in `seq 80 100`
+	do 
+		printf '\xE2\x9B\x'$i' '
+	done
+
+	printf '\n'
+}
+
+
 function check_ping () {
 
 	ping -q -c1 $1 > /dev/null

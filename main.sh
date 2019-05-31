@@ -3,17 +3,10 @@ function check_ping () {
 
 	ping -q -c1 $1 > /dev/null
 
-	#printf '\342\234\224\n'
-	#echo "\xE2\x9C\x94  existing"
-	#echo "\xE2\x9D\x8C missing"
-
-	if [ $? -eq 0 ]
-	then
-		#echo "(!)" "$2 $3 $4" "is connected"
-		echo "\xE2\x9C\x94  $2 $3 $4"
+	if [ $? -eq 0 ];then
+		echo "\xE2\x9C\x93 $2 $3 $4" | fmt -c -w "80"
 	else
-		#echo "(x)" "$2 $3 $4" "is not connected"
-		echo "\xE2\x9D\x8C  $2 $3 $4"
+		echo "\xE2\x9C\x98 $2 $3 $4" | fmt -c -w "80"
 	fi
 }
 
@@ -28,6 +21,8 @@ function fromFileCheck()
 	done < $fileName
 }
 
+cat 'data/logo.txt' | fmt -c -w "80"
+echo ""
 fromFileCheck
 
 
