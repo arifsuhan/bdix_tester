@@ -1,12 +1,17 @@
-body
+/*body
 {
 	margin: auto;
 	width: 50%;
-	/*border: 3px solid green;*/
+	border: 3px solid green;
 	padding: 10px;
 	text-align: center;
 }
 
 button{
-  margin:0px auto; //it will center them 
+  margin:0px auto; 
+}*/
+
+.row-space 
+{ 
+	margin-top:20px; 
 }
