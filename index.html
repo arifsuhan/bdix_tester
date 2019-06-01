@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>BDIX TESTER</title>
+	<style type="text/css">
+		body
+		{
+			margin: auto;
+			width: 50%;
+			/*border: 3px solid green;*/
+			padding: 10px;
+			text-align: center;
+		}
+	</style>
+</head>
+
+<body>
+
+	<h1>BDIX TESTER</h1>
+	<h1 id="check_connection">...</h1>
+	<button type="button" class="btn btn-success" value="Refresh Page" onClick="check()" >Connection Check</button>
+
+</body>
+
+<script type="text/javascript">
+
+	function check() {
+        var connection = document.getElementById('check_connection');
+        if(navigator.onLine) {
+            connection.innerHTML = 'Internet Connection is on';
+        }else{
+            connection.innerHTML = 'System is out of Internet';
+        }
+    }
+
+</script>
+</html>
