@@ -2,8 +2,8 @@
 <html>
 <head>
 	<title>BDIX TESTER</title>
-	<!-- <link rel="stylesheet" type="text/css" href="lib/style.css"> -->
-	<link rel="stylesheet" type="text/css" href="lib/bootstrap.min.css">
+	<!-- <link rel="stylesheet" type="text/css" href="lib/css/style.css"> -->
+	<link rel="stylesheet" type="text/css" href="lib/css/bootstrap.min.css">
 </head>
 
 <body class="text-center">
@@ -12,18 +12,16 @@
 	<h3 id="check_connection">...</h3>
 	<br>
 	<button type="button" class="btn btn-success" onClick="check()">Check Connection</button>	
+
+	<br>
+	<br>
+	<input type="text" id="pingWebsite" value="www." onchange="pingCheck(this.value)">
+	<br>
+	<br>
+	<span id="timeCheck">...</span>
 </body>
 
-<script type="text/javascript">
+<script src="lib/js/main.js"></script>
+<script src="lib/js/ping.min.js"></script>
 
-	function check() {
-        var connection = document.getElementById('check_connection');
-        if(navigator.onLine) {
-            connection.innerHTML = 'Internet Connection is on';
-        }else{
-            connection.innerHTML = 'System is out of Internet';
-        }
-    }
-
-</script>
 </html>
