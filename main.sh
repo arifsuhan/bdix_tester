@@ -1,7 +1,7 @@
 
 function check_ping () {
 
-	ping -q -c1 -w1 $1 > /dev/null
+	ping -q -c1 -W1 $1 > /dev/null
 
 	if [ $? -eq 0 ]
 	then
