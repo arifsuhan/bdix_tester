@@ -1,11 +1,32 @@
 import requests
 
-# url = "https://coronavirus-19-api.herokuapp.com/countries/Bangladesh"
-url = ""
+# url = "http://google.com"
+url = "http://server4.ftpbd.net"
+n = 1
 
-payload={}
-headers = {}
+def menu():
+	print( "+-+-+-+-+ +-+-+-+-+-+-+\n|B|D|I|X| |T|E|S|T|E|R|\n+-+-+-+-+ +-+-+-+-+-+-+" )
 
-response = requests.request("GET", url, headers=headers, data=payload)
+def read_urls():
 
-print(response.text)
+	with open("data/bdix_ip.csv","r") as file:
+		lines = [x.split(",")[0] for x in file.readlines()]
+	# print(lines)
+	return lines
+
+def call_url(url):
+	try:
+		response = requests.get(url, timeout=n)
+		print(response.status_code)
+		print(response.elapsed.total_seconds())
+	except:
+		print("Error!")
+
+def run():
+	menu()
+	urls = read_urls()
+
+	for i in urls:
+		call_url(i)
+
+run()
