@@ -2,3 +2,5 @@
 data/.DS_Store
 ref/.DS_Store
 venv/
+lib/__pycache__/*
+report/*
