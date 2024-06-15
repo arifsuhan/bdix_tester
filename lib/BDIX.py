@@ -28,7 +28,6 @@ class BDIX:
 
     def run(self):
         self.config_builder()
-        urls = FileManager().read(self.config["filePath"])[:2]
+        urls = FileManager().read(self.config["filePath"])[:10]
         data = self.client_result(urls)
-
         self.menu(data)

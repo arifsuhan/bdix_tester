@@ -13,51 +13,47 @@ class Client:
         result = {}
         now = datetime.now()
         formatted_now = now.strftime('%y-%m-%d %H:%M:%S') + f':{now.microsecond // 1000:03d}'
+        status = ""
+        signal = ""
 
         try:
             response = requests.get(url, timeout=self.timeout)
-            status_code = response.status_code
+            status = response.status_code
             elapsed_time = response.elapsed.total_seconds()
-            result = {
-                'url' : url,
-                'status' : status_code,
-                'time' : elapsed_time,
-                'signal' : 1
-            }
+            signal = 1
 
         except ConnectTimeout:
-            result = {
-                'status' : 'ConnectTimeout',
-                'signal' : 0
-            }
+            status = "ConnectTimeout"
+            signal = 0
+            
+        
+        except requests.ConnectionError:
+            status = "ConnectionError"
+            signal = 0
 
         except Exception as e:
-            result = {
-                'status' : e,
-                'signal' : -1
-            }
+            status = e
+            signal = -1
 
-        result["updateTime"] = str(formatted_now)
+        result = {
+            "url" : url,
+            "status" : status,
+            "signal" : signal,
+            "updateTime" : str(formatted_now)
+        }
         
         return result
 
     def run(self,urls):
         
         result = []
+        # print(urls)
 
         for url in tqdm(urls):
-            temp = {}
+            response = {}
             response = self.call(url)
-            signal = response['signal']
-            print(signal)
-
-            if signal:
-                temp['time'] = response['time']
-
-            signal = "Yes" if response['signal'] else "No"
-            temp['url'] = url
-            temp['signal'] = signal
-            result.append(temp)
+            response["signal"] = "Yes" if response['signal'] == 1 else "No"
+            result.append(response)
         
         return result
 
