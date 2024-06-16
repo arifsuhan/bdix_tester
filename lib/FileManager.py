@@ -26,7 +26,7 @@ class FileManager:
     
     def write(self,filename,data):
 
-        with open(filename,"a",encoding='utf-8') as file:
+        with open(filename,"w",encoding='utf-8') as file:
         
             if ".json" in filename and type(data[0]) == dict:        
                 file.write(json.dumps(data, ensure_ascii=False, indent=4))
@@ -58,3 +58,17 @@ class FileManager:
             result.append(temp)
 
         return key_list, result
+    
+    def write_html(self,filePath,data):
+
+        schema = """
+            <!DOCTYPE html>
+            <html>
+            <body>
+            <h1>IP List</h1>
+            <a href="{}">{}</a>
+            </body>
+            </html>
+        """
+
+        print()
